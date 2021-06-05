@@ -1,19 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Navbar from './components/navbar/navbar'
+import Sidebar from './components/sidebar/sidebar'
 
-function App() {
+const App = () => {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const openSidebar = () => {
+    setSidebarOpen(true);
+  }
+
+  const closeSidebar = () => {
+    setSidebarOpen(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          admin dashboard
-        </p>
-        
-          Learn React
-      </header>
+    <div className="container">
+      <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar}/>
+      <h1>admin</h1>
+      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
